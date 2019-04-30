@@ -14,7 +14,6 @@ public class CalculatorMain {
 		System.out.print(">>> ");
 		//무한 루프
 		while(true) {
-//			System.out.print(">>> ");
 			inputString= scanner.nextLine();
 			// 양쪽에 존재하는 스페이스바 등 white charactor 를 제거
 			inputString.trim();
