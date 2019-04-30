@@ -18,12 +18,7 @@ public class Calculator {
 		opt=this.checkOperator(inputString);
 		
 		//입력이 연산자 = 라면, 연산수행->필드초기화 ->결과출력
-		if(opt==99) 
-		{
-			//memory 필드의 값을 출력한다.
-			//this.printStatus();
-			
-			//결과 출력하면 operator, num2, status를 초기화
+		if(opt==99) {//결과 출력하면 operator, num2, status를 초기화
 			this.initField();
 		}
 		
@@ -35,15 +30,13 @@ public class Calculator {
 		}
 		
 		//입력이 일반연산자 +,-,/,*,%,^ 라면,
-		else {
-			//operator을 set한다.
+		else {	//operator을 set한다.
 			operator=opt;
 			this.setOperator(operator);
 			this.setStatus(2); 
 		}
 		//연산자를 필드에 저장(setOperator)
 	}
-	
 	
 	public void initField() {
 		//필드 operator,num2, status를 초기화 한다.
@@ -73,10 +66,9 @@ public class Calculator {
 			this.memory=this.mod();
 		
 		else if(operator==6)
-			memory=this.mod();
+			memory=this.pow();
 		
-		setMemory(memory);
-//		this.printValues();	
+		setMemory(memory);	
 	}
 	
 	public void printStatus() {
@@ -90,12 +82,7 @@ public class Calculator {
 		System.out.print("num2["+num2+"] >>> ");
 		
 	}
-	
-//	public void printValues() {
-//		System.out.println("getMemory(): "+getMemory()+"\ngetNum2():"+getNum2());
-//		System.out.println("getStatus():"+ getStatus()+"\ngetOperator():"+getOperator());
-//	}
-//	
+		
 	public int checkOperator(String op) {
 		//문자열 op가 연산자 인지, 피연산자인지, =연산자인지 구분.
 		switch(op) {
@@ -161,7 +148,7 @@ public class Calculator {
 	public int div() {//operator=4
 		if(num2==0) {//만약 num2가 0이면 계산이 안됨을 알리는 메시지 출력
 			System.out.println("계산 오류 : 0으로 나눌 수 없습니다.");
-			return 0;
+			return memory; //0으로 나누는 연산이 안되므로 memory는 이전값으로 그대로 유지
 		}
 		else //num2가 0이 아니라면.
 			return (int)(memory/num2);
@@ -172,17 +159,24 @@ public class Calculator {
 		//만약 num2가 0이면 계산이 안됨을 알리는 메시지 출력
 		if(num2==0){
 			System.out.println("계산 오류 : 0으로 나눌 수 없습니다.");
-			return 0;
+			return memory; //0으로 나누는 연산이 안되므로 memory는 이전값으로 그대로 유지
 		}
 		else //num2가 0이 아니라면
 			return (int)(memory%num2);
 	}
 	
 	public int pow() {//operator=6
-		// 2^5=32 , what about .. 2^(-5)=...?
+		// 밑: memory
+		// 지수: num2
 		int result=1;
-		for(int i=1; i<=num2; i++) 
-			result= result*memory;
+		if(num2>0){
+			for(int i=1; i<=num2; i++) 
+				result= result*memory;
+		}else if(num2<0){
+			for(int i=1; i<=num2; i++) 
+				result= result*memory;
+			result=1/result;
+		}//num2==0 ==> result=1
 		return result;
 	}
 
