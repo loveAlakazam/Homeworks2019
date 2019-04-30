@@ -147,7 +147,7 @@ public class Calculator {
 	public int div() {//operator=4
 		if(num2==0) {//만약 num2가 0이면 계산이 안됨을 알리는 메시지 출력
 			System.out.println("계산 오류 : 0으로 나눌 수 없습니다.");
-			return 0;
+			return memory; //0으로 나누는 연산은 안되므로 memory값은 이전값 그대로 유지
 		}
 		else //num2가 0이 아니라면.
 			return (int)(memory/num2);
@@ -158,7 +158,7 @@ public class Calculator {
 		//만약 num2가 0이면 계산이 안됨을 알리는 메시지 출력
 		if(num2==0){
 			System.out.println("계산 오류 : 0으로 나눌 수 없습니다.");
-			return 0;
+			return memory;//0으로 나누는 연산은 안되므로 moemroy값은 이전값 그대로 
 		}
 		else //num2가 0이 아니라면
 			return (int)(memory%num2);
