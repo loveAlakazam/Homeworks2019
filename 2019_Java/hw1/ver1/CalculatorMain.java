@@ -2,32 +2,32 @@ import java.util.Scanner;
 
 public class CalculatorMain {
 	public static void main(String[] args) {
-		//Calculator °´Ã¼ »ı¼º
-		//status=0À¸·Î ÃÊ±âÈ­, memory=0À¸·Î ÃÊ±âÈ­
+		//Calculator ê°ì²´ ìƒì„±
+		//status=0ìœ¼ë¡œ ì´ˆê¸°í™”, memory=0ìœ¼ë¡œ ì´ˆê¸°í™”
 		Calculator cal= new Calculator();
 		
-		//Scanner °´Ã¼ »ı¼º
+		//Scanner ê°ì²´ ìƒì„±
 		Scanner scanner = new Scanner(System.in);
 		
-		//ÀÔ·Â
+		//ì…ë ¥
 		String inputString;
 		System.out.print(">>> ");
-		//¹«ÇÑ ·çÇÁ
+		//ë¬´í•œ ë£¨í”„
 		while(true) {
 //			System.out.print(">>> ");
 			inputString= scanner.nextLine();
-			// ¾çÂÊ¿¡ Á¸ÀçÇÏ´Â ½ºÆäÀÌ½º¹Ù µî white charactor ¸¦ Á¦°Å
+			// ì–‘ìª½ì— ì¡´ì¬í•˜ëŠ” ìŠ¤í˜ì´ìŠ¤ë°” ë“± white charactor ë¥¼ ì œê±°
 			inputString.trim();
 			
-			// Å° q(Q)¸¦ ´©¸£¸é ¹«ÇÑ·çÇÁ¸¦ ºüÁ®³ª°¡µµ·Ï ÇÑ´Ù.(°è»ê±â Á¾·á) 
+			// í‚¤ q(Q)ë¥¼ ëˆ„ë¥´ë©´ ë¬´í•œë£¨í”„ë¥¼ ë¹ ì ¸ë‚˜ê°€ë„ë¡ í•œë‹¤.(ê³„ì‚°ê¸° ì¢…ë£Œ) 
 			if(inputString.equals("q") || inputString.contentEquals("Q") )
 				break;
 			
-			// Å°°¡ q(Q)¿Ü ´Ù¸¥ ¹®ÀÚ¶ó¸é °è¼Ó µ¿ÀÛ.
+			// í‚¤ê°€ q(Q)ì™¸ ë‹¤ë¥¸ ë¬¸ìë¼ë©´ ê³„ì† ë™ì‘.
 			cal.run(inputString);
 			cal.printStatus();
 		}
-		System.out.println("°è»ê Á¾·á");
+		System.out.println("ê³„ì‚° ì¢…ë£Œ");
 		scanner.close();
 	}
 
