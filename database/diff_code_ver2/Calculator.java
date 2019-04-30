@@ -1,59 +1,59 @@
 public class Calculator {
-	//private Á¢±Ù Á¦ÇÑÀÚ´Â ÇØ´ç Å¬·¡½º ¹Ù±ù¿¡¼­´Â Á¢±ÙÀÌ Á¦ÇÑµÇ¾îÀÖ´Ù.
-	//private Á¢±Ù Á¦ÇÑÀÚ¸¦ °®´Â ÇÊµå¸¦ °¡Áö°í ¼³Á¤(setter), ÀĞÀ½(getter)À» ÇÑ´Ù.
-	// setter¿Í getterÀ» »ç¿ëÇÏ´Â ÀÌÀ¯´Â ¿ÜºÎ¿¡¼­ÀÇ µ¥ÀÌÅÍ Á¢±ÙÀ» ¹æÁöÇÏ±â À§ÇØ¼­ÀÌ´Ù.
-	// setter: ¸Å°³º¯¼öÀÌ¸§°ú, privateÇÊµåÀÌ¸§À» µ¿ÀÏÇÏ°ÔÇÏ¿©, privateÇÊµå¸¦ ÀúÀå.
-	// getter: privateÇÊµå°ªÀ» ÀĞÀº ÈÄ ±× °ªÀ¸·Î ¿ÜºÎ¿¡ Àü´Ş.
+	//private ì ‘ê·¼ ì œí•œìëŠ” í•´ë‹¹ í´ë˜ìŠ¤ ë°”ê¹¥ì—ì„œëŠ” ì ‘ê·¼ì´ ì œí•œë˜ì–´ìˆë‹¤.
+	//private ì ‘ê·¼ ì œí•œìë¥¼ ê°–ëŠ” í•„ë“œë¥¼ ê°€ì§€ê³  ì„¤ì •(setter), ì½ìŒ(getter)ì„ í•œë‹¤.
+	// setterì™€ getterì„ ì‚¬ìš©í•˜ëŠ” ì´ìœ ëŠ” ì™¸ë¶€ì—ì„œì˜ ë°ì´í„° ì ‘ê·¼ì„ ë°©ì§€í•˜ê¸° ìœ„í•´ì„œì´ë‹¤.
+	// setter: ë§¤ê°œë³€ìˆ˜ì´ë¦„ê³¼, privateí•„ë“œì´ë¦„ì„ ë™ì¼í•˜ê²Œí•˜ì—¬, privateí•„ë“œë¥¼ ì €ì¥.
+	// getter: privateí•„ë“œê°’ì„ ì½ì€ í›„ ê·¸ ê°’ìœ¼ë¡œ ì™¸ë¶€ì— ì „ë‹¬.
 	private int memory=0;
 	private int num2 = 0;
 	private int operator=0;
 	
-	// ÇöÀç ÀÔ·ÂµÈ »óÅÂ¸¦ ÀúÀåÇÑ´Ù. (0À¸·Î ÃÊ±âÇÑ´Ù)
+	// í˜„ì¬ ì…ë ¥ëœ ìƒíƒœë¥¼ ì €ì¥í•œë‹¤. (0ìœ¼ë¡œ ì´ˆê¸°í•œë‹¤)
 	private int status=0;
-	int opt;//°¡ÀåÃÖ±ÙÀÇ ¿¬»êÀÚ¸¦ ÀÇ¹ÌÇÔ.
+	int opt;//ê°€ì¥ìµœê·¼ì˜ ì—°ì‚°ìë¥¼ ì˜ë¯¸í•¨.
 	
-	public void run(String inputString) {//ÀÔ·ÂÀ» inputStringÀ» ÅëÇØ Àü´Ş¹Ş´Â´Ù.	
-		// ÀÔ·ÂÀÌ ¿¬»êÀÚÀÎÁö ÇÇ¿¬»êÀÚÀÎÁö È®ÀÎÇÑ´Ù.(checkOperator)
+	public void run(String inputString) {//ì…ë ¥ì„ inputStringì„ í†µí•´ ì „ë‹¬ë°›ëŠ”ë‹¤.	
+		// ì…ë ¥ì´ ì—°ì‚°ìì¸ì§€ í”¼ì—°ì‚°ìì¸ì§€ í™•ì¸í•œë‹¤.(checkOperator)
 		opt=this.checkOperator(inputString);
 		
-		//ÀÔ·ÂÀÌ ¿¬»êÀÚ = ¶ó¸é, ¿¬»ê¼öÇà->ÇÊµåÃÊ±âÈ­ ->°á°úÃâ·Â
+		//ì…ë ¥ì´ ì—°ì‚°ì = ë¼ë©´, ì—°ì‚°ìˆ˜í–‰->í•„ë“œì´ˆê¸°í™” ->ê²°ê³¼ì¶œë ¥
 		if(opt==99) 
 		{
-			//memory ÇÊµåÀÇ °ªÀ» Ãâ·ÂÇÑ´Ù.
+			//memory í•„ë“œì˜ ê°’ì„ ì¶œë ¥í•œë‹¤.
 			this.printStatus();
 			
-			//°á°ú Ãâ·ÂÇÏ¸é operator, num2, status¸¦ ÃÊ±âÈ­
+			//ê²°ê³¼ ì¶œë ¥í•˜ë©´ operator, num2, statusë¥¼ ì´ˆê¸°í™”
 			this.initField();
 		}
 		
-		// ÀÔ·ÂÀÌ ÇÇ¿¬»êÀÚ(¼ıÀÚ)¶ó¸é, ÇÇ¿¬»êÀÚ¸¦ ÇÊµå¿¡ ÀúÀå(setData)
+		// ì…ë ¥ì´ í”¼ì—°ì‚°ì(ìˆ«ì)ë¼ë©´, í”¼ì—°ì‚°ìë¥¼ í•„ë“œì— ì €ì¥(setData)
 		else if(opt==-1) {
-			//inputStringÀÌ ¼ıÀÚ¶ó¸é setDataÇÔ¼ö¿¡¼­
-			//¹®ÀÚ·ÎµÈ ¼ıÀÚ¸¦ intÅ¸ÀÔÀ¸·Î º¯È¯½ÃÄÑ¼­ memory¿Í num2¿¡ ³Ö´Â´Ù.
+			//inputStringì´ ìˆ«ìë¼ë©´ setDataí•¨ìˆ˜ì—ì„œ
+			//ë¬¸ìë¡œëœ ìˆ«ìë¥¼ intíƒ€ì…ìœ¼ë¡œ ë³€í™˜ì‹œì¼œì„œ memoryì™€ num2ì— ë„£ëŠ”ë‹¤.
 			this.setData(inputString);
 		}
 		
-		//ÀÔ·ÂÀÌ ÀÏ¹İ¿¬»êÀÚ +,-,/,*,%,^ ¶ó¸é,
+		//ì…ë ¥ì´ ì¼ë°˜ì—°ì‚°ì +,-,/,*,%,^ ë¼ë©´,
 		else {
-			//operatorÀ» setÇÑ´Ù.
+			//operatorì„ setí•œë‹¤.
 			operator=opt;
 			this.setOperator(operator);
 			this.setStatus(2); 
 		}
-		//¿¬»êÀÚ¸¦ ÇÊµå¿¡ ÀúÀå(setOperator)
+		//ì—°ì‚°ìë¥¼ í•„ë“œì— ì €ì¥(setOperator)
 	}
 	
 	public void initField() {
-		//ÇÊµå operator,num2, status¸¦ ÃÊ±âÈ­ ÇÑ´Ù.
+		//í•„ë“œ operator,num2, statusë¥¼ ì´ˆê¸°í™” í•œë‹¤.
 		this.setOperator(0);
 		this.setNum2(0);
-		// Ã³À½ ½ÃÀÛÇÒ¶§ ¼ıÀÚ°ª¸¸ memory¿¡ ³Ö°í.. 
-		//= ¿¬»êÀÌÈÄ¿¡´Â..memory¿¡ num2¿¡ ³Ö¾î¼­ ¿¬»ê¸¸ÇÏ¹Ç·Î.. 2·Î ÃÊ±âÈ­.
+		// ì²˜ìŒ ì‹œì‘í• ë•Œ ìˆ«ìê°’ë§Œ memoryì— ë„£ê³ .. 
+		//= ì—°ì‚°ì´í›„ì—ëŠ”..memoryì— num2ì— ë„£ì–´ì„œ ì—°ì‚°ë§Œí•˜ë¯€ë¡œ.. 2ë¡œ ì´ˆê¸°í™”.
 		this.setStatus(2);
 	}
 	
 	public void calculate() {
-		// operator¿¡ µû¶ó ÇØ´ç ¿¬»ê ¸Ş¼Òµå¸¦ È£ÃâÇÑ´Ù.
+		// operatorì— ë”°ë¼ í•´ë‹¹ ì—°ì‚° ë©”ì†Œë“œë¥¼ í˜¸ì¶œí•œë‹¤.
 		int operator=getOperator();
 		if (operator==1)
 			this.memory=this.add();
@@ -71,19 +71,19 @@ public class Calculator {
 			this.memory=this.mod();
 		
 		else if(operator==6)
-			memory=this.mod();
+			memory=this.pow();
 		
 		setMemory(memory);
 	}
 	
 	public void printStatus() {
-		//print¹®À» »ç¿ëÇÏ¿© field°ªÀ» Ãâ·ÂÇÑ´Ù.
-		//getMemory()¿¡ ÀúÀåµÈ °ªÀ» Ãâ·ÂÇÑ´Ù.
+		//printë¬¸ì„ ì‚¬ìš©í•˜ì—¬ fieldê°’ì„ ì¶œë ¥í•œë‹¤.
+		//getMemory()ì— ì €ì¥ëœ ê°’ì„ ì¶œë ¥í•œë‹¤.
 		System.out.println(this.getMemory());
 	}
 	
 	public int checkOperator(String op) {
-		//¹®ÀÚ¿­ op°¡ ¿¬»êÀÚ ÀÎÁö, ÇÇ¿¬»êÀÚÀÎÁö, =¿¬»êÀÚÀÎÁö ±¸ºĞ.
+		//ë¬¸ìì—´ opê°€ ì—°ì‚°ì ì¸ì§€, í”¼ì—°ì‚°ìì¸ì§€, =ì—°ì‚°ìì¸ì§€ êµ¬ë¶„.
 		switch(op) {
 			case "+": 
 				return 1;
@@ -103,30 +103,30 @@ public class Calculator {
 			case "^":
 				return 6;
 			
-			case "=": //µîÈ£¿¬»êÀÚ
+			case "=": //ë“±í˜¸ì—°ì‚°ì
 				return 99;
 				
-			default: //ÇÇ¿¬»êÀÚ
+			default: //í”¼ì—°ì‚°ì
 				return -1;	
 		}
 	}
 	
 	public void setData(String data) {
-		//data·Î Àü´ŞµÈ °ªÀ» Á¤¼ö·Î º¯È¯ÇÏ¿© memory³ª num2¿¡ ÀúÀåÇÑ´Ù.
-		if(this.getStatus()==0) {//status==0: memory¿¡ data°ªÀ» ³Ö´Â´Ù.-->status=1ÀÌµÊ.
+		//dataë¡œ ì „ë‹¬ëœ ê°’ì„ ì •ìˆ˜ë¡œ ë³€í™˜í•˜ì—¬ memoryë‚˜ num2ì— ì €ì¥í•œë‹¤.
+		if(this.getStatus()==0) {//status==0: memoryì— dataê°’ì„ ë„£ëŠ”ë‹¤.-->status=1ì´ë¨.
 			memory=Integer.parseInt(data);
 			this.setMemory(memory);
 			this.setStatus(1);	
 		}
 		
-		else{//status==2: µÎ¹øÂ° ÇÇ¿¬»êÀÚ¿¡ data°ªÀ» ³Ö´Â´Ù.-->status=3ÀÌµÊ.
+		else{//status==2: ë‘ë²ˆì§¸ í”¼ì—°ì‚°ìì— dataê°’ì„ ë„£ëŠ”ë‹¤.-->status=3ì´ë¨.
 			num2=Integer.parseInt(data);
 			this.setNum2(num2);
-			//µÎ¹øÂ° ÇÇ¿¬»êÀÚ¸¦ ³ÖÀ¸¸é status¸¦ 3À¸·Î ÇÑ´Ù.
+			//ë‘ë²ˆì§¸ í”¼ì—°ì‚°ìë¥¼ ë„£ìœ¼ë©´ statusë¥¼ 3ìœ¼ë¡œ í•œë‹¤.
 			this.setStatus(status=3);
 			
-			//µÎ¹øÂ° º¯¼ö±îÁö °ªÀ» ³Ö°ÔµÇ¸é ÀÌ¶§ °è»ê.
-			//getStatus()°¡ 3ÀÌ¶ó¸é °è»êÀ» ¼öÇàÇÑ´Ù.
+			//ë‘ë²ˆì§¸ ë³€ìˆ˜ê¹Œì§€ ê°’ì„ ë„£ê²Œë˜ë©´ ì´ë•Œ ê³„ì‚°.
+			//getStatus()ê°€ 3ì´ë¼ë©´ ê³„ì‚°ì„ ìˆ˜í–‰í•œë‹¤.
 			if(this.getStatus()==3)
 				this.calculate();
 		}
@@ -145,31 +145,39 @@ public class Calculator {
 	}
 	
 	public int div() {//operator=4
-		if(num2==0) {//¸¸¾à num2°¡ 0ÀÌ¸é °è»êÀÌ ¾ÈµÊÀ» ¾Ë¸®´Â ¸Ş½ÃÁö Ãâ·Â
-			System.out.println("°è»ê ¿À·ù : 0À¸·Î ³ª´­ ¼ö ¾ø½À´Ï´Ù.");
+		if(num2==0) {//ë§Œì•½ num2ê°€ 0ì´ë©´ ê³„ì‚°ì´ ì•ˆë¨ì„ ì•Œë¦¬ëŠ” ë©”ì‹œì§€ ì¶œë ¥
+			System.out.println("ê³„ì‚° ì˜¤ë¥˜ : 0ìœ¼ë¡œ ë‚˜ëˆŒ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			return 0;
 		}
-		else //num2°¡ 0ÀÌ ¾Æ´Ï¶ó¸é.
+		else //num2ê°€ 0ì´ ì•„ë‹ˆë¼ë©´.
 			return (int)(memory/num2);
 		
 	}
 	
 	public int mod() {//operator=5
-		//¸¸¾à num2°¡ 0ÀÌ¸é °è»êÀÌ ¾ÈµÊÀ» ¾Ë¸®´Â ¸Ş½ÃÁö Ãâ·Â
+		//ë§Œì•½ num2ê°€ 0ì´ë©´ ê³„ì‚°ì´ ì•ˆë¨ì„ ì•Œë¦¬ëŠ” ë©”ì‹œì§€ ì¶œë ¥
 		if(num2==0){
-			System.out.println("°è»ê ¿À·ù : 0À¸·Î ³ª´­ ¼ö ¾ø½À´Ï´Ù.");
+			System.out.println("ê³„ì‚° ì˜¤ë¥˜ : 0ìœ¼ë¡œ ë‚˜ëˆŒ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			return 0;
 		}
-		else //num2°¡ 0ÀÌ ¾Æ´Ï¶ó¸é
+		else //num2ê°€ 0ì´ ì•„ë‹ˆë¼ë©´
 			return (int)(memory%num2);
 	}
 	
 	public int pow() {//operator=6
-		// 2^5=32 , what about .. 2^(-5)=...?
+		//memoryê°€ ë°‘, num2ê°€ 
 		int result=1;
-		for(int i=1; i<=num2; i++) 
-			result= result*memory;
-		return result;
+		if(num2>0) {
+			for(int i=1; i<=num2; i++) 
+				result= result*memory;
+			return result;
+			
+		}else if(num2<0) {
+			for(int i=1; i<=num2; i++) 
+				result= result*memory;
+			return (1/result);
+		}else //num2=0
+			return result;
 	}
 
 	public int getMemory() {
@@ -198,11 +206,11 @@ public class Calculator {
 		this.operator = operator;
 	}
 
-	public int getStatus() {//status°ªÀ» ¾ò´Â´Ù(ÀĞ´Â´Ù)
+	public int getStatus() {//statusê°’ì„ ì–»ëŠ”ë‹¤(ì½ëŠ”ë‹¤)
 		return status;
 	}
 
-	public void setStatus(int status) {//status°ªÀ» ÀúÀåÇÑ´Ù.
+	public void setStatus(int status) {//statusê°’ì„ ì €ì¥í•œë‹¤.
 		this.status = status;
 	}
 }
