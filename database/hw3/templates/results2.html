@@ -1,0 +1,47 @@
+<!DOTYPE html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+      <h1>Search Results....</h1>
+      <style media="screen">
+        table{
+          width:100%;
+          text-align:center;
+          border: 1px solid #444444;
+          border-collapse: collapse;
+        }
+        th, td{
+          border: 1px solid #444444;
+        }
+      </style>
+      <table>
+        <thead> <!--컬럼 표시 -->
+          <tr>
+            <th></th>
+            {%for c in columns%}
+              <th>{{c}}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+
+        <tbody> <!--데이터 입력 -->
+
+          {%for i in range(result_len) %}
+            <tr>
+              <th>{{i+1}}</th> <!--index-->
+              <td>{{results[i][0]}}</td>
+              <td>{{results[i][1]}}</td>
+              <td>{{results[i][7]}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+
+        <tfoot> <!--검색 결과 레코드 개수출력 -->
+          <tr>
+            {{result_len}} 개의 레코드가 검색되었습니다.
+          </tr>
+        </tfoot>
+      </table>
+  </body>
+</html>
