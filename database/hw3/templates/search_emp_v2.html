@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Search Employee</title>
+  </head>
+  <body>
+    <!--autocomplete="off" :자동완성 기능 사용중지  -->
+    <form action="http://127.0.0.1:8888/search" method="post">
+      <input type="radio" name="choice" value="empno" autocomplete="off">Employee Number</input><p>
+      <input type="radio" name="choice" value="ename" autocomplete="off">Employee Name</input><p>
+      <input type="radio" name="choice" value="deptno" autocomplete="off">Department Number</input><p>
+      <input type="text" name="keyword" autocomplete="off"/>
+      <input type="submit" value="Search"/>
+    </form>
+  </body>
+</html>
