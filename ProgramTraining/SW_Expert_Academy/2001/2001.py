@@ -1,4 +1,4 @@
-# 답은 일치한데.. sw 아카데미에선 numpy를 지원 안한다네요.. ^^;
+# 답은 일치한데.. sw expert 아카데미에선 numpy를 지원 안한다네요.. ^^;
 import numpy as np
 T= int(input()) #테스트 케이스 입력
 
